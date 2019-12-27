@@ -459,14 +459,14 @@ extension ActivityPredictionViewController {
                 minRange: -7000,
                 maxRange: 7000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.width / 2 - self.rightBall.frame.width,
+                maxDomain: self.middleView.frame.width - self.singleBall.frame.width,
                 value: CGFloat(rightSum - leftSum)
             )
             verticalConstant = map(
                 minRange: -7000,
                 maxRange: 7000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.height - self.rightBall.frame.height,
+                maxDomain: self.middleView.frame.height - self.singleBall.frame.height,
                 value: CGFloat((rightBottomSum + leftBottomSum) - (rightTopSum + leftTopSum))
             )
         }
