@@ -112,6 +112,7 @@ enum Activity: String {
 enum Ball: Int {
     case left
     case right
+    case single
 }
 
 @available (iOS 13, *)

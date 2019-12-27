@@ -24,7 +24,7 @@ final class AudioPlayback: NSObject, AVAudioPlayerDelegate {
     
     private(set) var audioPlayer = AVAudioPlayer()
     private(set) var playbackState: PlaybackState = .pause
-    let url = URL(fileURLWithPath: Bundle.main.path(forResource: "Lover", ofType: "mp3")!)
+    let url = URL(fileURLWithPath: "")
     
     func play(pan: Float) {
         if playbackState == .pause {
