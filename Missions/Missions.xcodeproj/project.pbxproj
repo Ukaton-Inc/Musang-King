@@ -11,12 +11,13 @@
 		E11AEABF23B6E3F300979EBA /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AEABE23B6E3F300979EBA /* GamesViewController.swift */; };
 		E11AEAC223B6E40500979EBA /* GameOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AEAC023B6E40500979EBA /* GameOneViewController.swift */; };
 		E11AEAC323B6E40500979EBA /* GameCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AEAC123B6E40500979EBA /* GameCVCell.swift */; };
+		E1AC7E1C23BE390F00C382AA /* BalanceGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7E1B23BE390F00C382AA /* BalanceGameViewController.swift */; };
+		E1AC7E1E23BE395300C382AA /* SetupDeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7E1D23BE395300C382AA /* SetupDeviceTableViewController.swift */; };
 		EA1D215A23B0BE50009FCCC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D215923B0BE50009FCCC4 /* AppDelegate.swift */; };
 		EA1D215C23B0BE50009FCCC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D215B23B0BE50009FCCC4 /* SceneDelegate.swift */; };
 		EA1D216323B0BE55009FCCC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1D216223B0BE55009FCCC4 /* Assets.xcassets */; };
 		EA1D216623B0BE55009FCCC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1D216423B0BE55009FCCC4 /* LaunchScreen.storyboard */; };
 		EA1D216E23B0BF29009FCCC4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D216D23B0BF29009FCCC4 /* DashboardViewController.swift */; };
-		EA1D217023B0C086009FCCC4 /* ActivityPredictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D216F23B0C086009FCCC4 /* ActivityPredictionViewController.swift */; };
 		EA1D217223B15D99009FCCC4 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D217123B15D99009FCCC4 /* Disk.swift */; };
 		EA1D217A23B15EB3009FCCC4 /* MissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D217923B15EB3009FCCC4 /* MissionsView.swift */; };
 		EA1D217F23B17DF5009FCCC4 /* UIView+Missions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D217E23B17DF5009FCCC4 /* UIView+Missions.swift */; };
@@ -34,7 +35,6 @@
 		EA1D219A23B1F46B009FCCC4 /* Array+Missions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D219923B1F46B009FCCC4 /* Array+Missions.swift */; };
 		EA1D219C23B1F615009FCCC4 /* CSwiftV.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D219B23B1F615009FCCC4 /* CSwiftV.swift */; };
 		EA1D21A823B1FB9B009FCCC4 /* AssetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D21A723B1FB9B009FCCC4 /* AssetConstants.swift */; };
-		EA1D21B023B1FF26009FCCC4 /* SetupDeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D21AF23B1FF26009FCCC4 /* SetupDeviceTableViewController.swift */; };
 		EA1D21B423B2B9AE009FCCC4 /* RecordingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D21B323B2B9AE009FCCC4 /* RecordingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +43,8 @@
 		E11AEABE23B6E3F300979EBA /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		E11AEAC023B6E40500979EBA /* GameOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOneViewController.swift; sourceTree = "<group>"; };
 		E11AEAC123B6E40500979EBA /* GameCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCVCell.swift; sourceTree = "<group>"; };
+		E1AC7E1B23BE390F00C382AA /* BalanceGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameViewController.swift; sourceTree = "<group>"; };
+		E1AC7E1D23BE395300C382AA /* SetupDeviceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupDeviceTableViewController.swift; path = "Missions/Settings Tab/SetupDeviceTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		EA1D215623B0BE50009FCCC4 /* Missions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Missions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1D215923B0BE50009FCCC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA1D215B23B0BE50009FCCC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +52,6 @@
 		EA1D216523B0BE55009FCCC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA1D216723B0BE55009FCCC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA1D216D23B0BF29009FCCC4 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		EA1D216F23B0C086009FCCC4 /* ActivityPredictionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPredictionViewController.swift; sourceTree = "<group>"; };
 		EA1D217123B15D99009FCCC4 /* Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
 		EA1D217923B15EB3009FCCC4 /* MissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsView.swift; sourceTree = "<group>"; };
 		EA1D217E23B17DF5009FCCC4 /* UIView+Missions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Missions.swift"; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		EA1D219923B1F46B009FCCC4 /* Array+Missions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Missions.swift"; sourceTree = "<group>"; };
 		EA1D219B23B1F615009FCCC4 /* CSwiftV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSwiftV.swift; sourceTree = "<group>"; };
 		EA1D21A723B1FB9B009FCCC4 /* AssetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetConstants.swift; sourceTree = "<group>"; };
-		EA1D21AF23B1FF26009FCCC4 /* SetupDeviceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDeviceTableViewController.swift; sourceTree = "<group>"; };
 		EA1D21B323B2B9AE009FCCC4 /* RecordingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +86,7 @@
 		E11AEABC23B6E3C000979EBA /* Games Tab */ = {
 			isa = PBXGroup;
 			children = (
+				E1AC7E1B23BE390F00C382AA /* BalanceGameViewController.swift */,
 				E11AEABE23B6E3F300979EBA /* GamesViewController.swift */,
 				E11AEABD23B6E3D900979EBA /* Games */,
 			);
@@ -200,10 +201,9 @@
 		EA1D21A423B1F73D009FCCC4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1AC7E1D23BE395300C382AA /* SetupDeviceTableViewController.swift */,
 				E11AEABA23B6E38C00979EBA /* TabBarController.swift */,
 				EA1D216D23B0BF29009FCCC4 /* DashboardViewController.swift */,
-				EA1D216F23B0C086009FCCC4 /* ActivityPredictionViewController.swift */,
-				EA1D21AF23B1FF26009FCCC4 /* SetupDeviceTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -294,13 +294,13 @@
 				EA1D219C23B1F615009FCCC4 /* CSwiftV.swift in Sources */,
 				EA1D218623B1F2E5009FCCC4 /* BLE.swift in Sources */,
 				EA1D218B23B1F324009FCCC4 /* AudioPlayback.swift in Sources */,
-				EA1D217023B0C086009FCCC4 /* ActivityPredictionViewController.swift in Sources */,
+				E1AC7E1C23BE390F00C382AA /* BalanceGameViewController.swift in Sources */,
 				E11AEAC223B6E40500979EBA /* GameOneViewController.swift in Sources */,
 				EA1D21A823B1FB9B009FCCC4 /* AssetConstants.swift in Sources */,
-				EA1D21B023B1FF26009FCCC4 /* SetupDeviceTableViewController.swift in Sources */,
 				EA1D218123B1F22E009FCCC4 /* Enums.swift in Sources */,
 				EA1D219423B1F410009FCCC4 /* NotificationCenter+Missions.swift in Sources */,
 				E11AEAC323B6E40500979EBA /* GameCVCell.swift in Sources */,
+				E1AC7E1E23BE395300C382AA /* SetupDeviceTableViewController.swift in Sources */,
 				EA1D215C23B0BE50009FCCC4 /* SceneDelegate.swift in Sources */,
 				EA1D218423B1F2CE009FCCC4 /* Session.swift in Sources */,
 				EA1D219623B1F428009FCCC4 /* Date+Missions.swift in Sources */,
