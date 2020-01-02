@@ -183,7 +183,7 @@ extension DashboardViewController {
  @objc extension DashboardViewController {
     
     func didTapTestButton(_ sender: UIBarButtonItem) {
-        self.navigationController?.pushViewController(ActivityPredictionViewController(), animated: true)
+        self.navigationController?.pushViewController(BalanceGameViewController(gameType: .none), animated: true)
     }
     
     func didTapActionButton(_ sender: UIBarButtonItem) {

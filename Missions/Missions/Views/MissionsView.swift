@@ -59,14 +59,14 @@ class MissionsView: UIView {
     private lazy var right0: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .clear
         
         return view
     }()
     private lazy var right1: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -74,7 +74,7 @@ class MissionsView: UIView {
     private lazy var right2: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -82,7 +82,7 @@ class MissionsView: UIView {
     private lazy var right3: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -90,7 +90,7 @@ class MissionsView: UIView {
     private lazy var right4: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -98,7 +98,7 @@ class MissionsView: UIView {
     private lazy var right5: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -106,14 +106,14 @@ class MissionsView: UIView {
     private lazy var left0: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .clear
         
         return view
     }()
     private lazy var left1: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -121,7 +121,7 @@ class MissionsView: UIView {
     private lazy var left2: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -129,7 +129,7 @@ class MissionsView: UIView {
     private lazy var left3: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -137,7 +137,7 @@ class MissionsView: UIView {
     private lazy var left4: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .clear
         
         return view
     }()
@@ -145,7 +145,7 @@ class MissionsView: UIView {
     private lazy var left5: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .clear
         
         return view
     }()

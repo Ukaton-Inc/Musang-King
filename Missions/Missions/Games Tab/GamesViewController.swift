@@ -108,12 +108,12 @@ extension GamesViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         switch game.title {
         case GameTitle.one :
-            self.navigationController?.pushViewController(ActivityPredictionViewController(), animated: true)
+            self.navigationController?.pushViewController(BalanceGameViewController(gameType: .single), animated: true)
         case GameTitle.two:
-            self.navigationController?.pushViewController(ActivityPredictionViewController(), animated: true)
+            self.navigationController?.pushViewController(BalanceGameViewController(gameType: .double), animated: true)
         default:
-            self.navigationController?.pushViewController(ActivityPredictionViewController(), animated: true)
-        }
+            self.navigationController?.pushViewController(BalanceGameViewController(gameType: .none), animated: true)
         
+        }
     }
 }

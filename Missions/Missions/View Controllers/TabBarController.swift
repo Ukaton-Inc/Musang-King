@@ -13,6 +13,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
+        self.navigationItem.title = "Games"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,17 +21,27 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         // view controllers
         let gamesVC = GamesViewController()
-        let gamesIcon = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        let gamesIcon = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
         gamesVC.tabBarItem = gamesIcon
         
-        let homeVC = SetupDeviceTableViewController()
-        let homeIcon = UITabBarItem(title: "Home", image: UIImage(named: "settings"), tag: 1)
-        homeVC.tabBarItem = homeIcon
+        let settingsVC = SetupDeviceTableViewController()
+        let settingsIcon = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 1)
+        settingsVC.tabBarItem = settingsIcon
         
         // set root vc
-        let viewControllers = [homeVC, gamesVC]
+        let viewControllers = [gamesVC, settingsVC]
         
         self.viewControllers = viewControllers
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch item.tag {
+        case 0:
+            self.navigationItem.title = "Games"
+        case 1:
+            self.navigationItem.title = "Settings"
+        default:
+            break
+        }
+    }
 }

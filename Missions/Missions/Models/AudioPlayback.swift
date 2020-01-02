@@ -2,8 +2,8 @@
 //  AudioPlayback.swift
 //  Missions
 //
-//  Created by Elina Lua Ming on 12/23/19.
-//  Copyright © 2019 Elina Lua Ming. All rights reserved.
+//  Created by Umar Qattan on 12/23/19.
+//  Copyright © 2019 Umar Qattan. All rights reserved.
 //
 
 import UIKit
@@ -24,11 +24,12 @@ final class AudioPlayback: NSObject, AVAudioPlayerDelegate {
     
     private(set) var audioPlayer = AVAudioPlayer()
     private(set) var playbackState: PlaybackState = .pause
-    let url = URL(fileURLWithPath: "")
+    let url = Bundle.main.url(forResource: "sawtooth", withExtension: "mp3")!
     
-    func play(pan: Float) {
+    func play(pan: Float, volume: Float) {
         if playbackState == .pause {
             audioPlayer.pan = pan
+            audioPlayer.volume = volume
             playbackState = playbackState.toggle
             audioPlayer.play()
         } else if playbackState == .play {
@@ -37,8 +38,14 @@ final class AudioPlayback: NSObject, AVAudioPlayerDelegate {
         }
     }
     
+
+    
     func setPanValue(_ pan: Float) {
         audioPlayer.pan = pan
+    }
+    
+    func setVolumeValue(_ volume: Float) {
+        audioPlayer.volume = volume
     }
     
     func skipToStart() {
