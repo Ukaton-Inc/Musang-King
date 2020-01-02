@@ -13,7 +13,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        
         self.navigationItem.title = "Games"
     }
     

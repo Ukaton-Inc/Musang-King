@@ -50,6 +50,7 @@ class GamesViewController: UIViewController {
 extension GamesViewController {
     
     func configureNavBar() {
+        self.tabBarController?.navigationItem.title = "Games"
     }
     
     func addSubviews() {
@@ -112,7 +113,7 @@ extension GamesViewController: UICollectionViewDelegate, UICollectionViewDataSou
             self.navigationController?.pushViewController(BalanceGameViewController(gameType: .double), animated: true)
         default:
             self.navigationController?.pushViewController(BalanceGameViewController(gameType: .none), animated: true)
-        }
         
+        }
     }
 }
