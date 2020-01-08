@@ -41,18 +41,6 @@ class BalanceGameViewController: UIViewController {
     private var singleBallTopAnchorConstraint = NSLayoutConstraint()
     private var singleBallLeadingAnchorConstraint = NSLayoutConstraint()
     
-    private lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(frame: .zero)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.insertSegment(withTitle: "1 Ball", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "2 Balls", at: 1, animated: true)
-        segmentedControl.apportionsSegmentWidthsByContent = true
-        segmentedControl.selectedSegmentIndex = 1
-        segmentedControl.isHidden = true
-        
-        return segmentedControl
-    }()
-    
     private lazy var soundSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +49,34 @@ class BalanceGameViewController: UIViewController {
         return slider
     }()
     
-    private lazy var topView: UIView = {
+    private lazy var scoreView: UIView = {
+        let scoreView = UIView(frame: .zero)
+        scoreView.backgroundColor = .white
+        scoreView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scoreView
+    }()
+    
+    
+    private lazy var scoreViewLabel: UILabel = {
+        let scoreLabel = UILabel()
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.text = "Score :"
+        scoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        
+        return scoreLabel
+    }()
+    
+    private lazy var scoreLabel: UILabel = {
+        let scoreLabel = UILabel()
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.text = "0"
+        scoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        
+        return scoreLabel
+    }()
+    
+    private lazy var insolesView: UIView = {
         let topView = UIView(frame: .zero)
         topView.backgroundColor = .white
         topView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,9 +84,9 @@ class BalanceGameViewController: UIViewController {
         return topView
     }()
     
-    private lazy var middleView: UIView = {
+    private lazy var gameView: UIView = {
         let middleView = UIView(frame: .zero)
-        middleView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        middleView.backgroundColor = UIColor(white: 0.9, alpha: 1)
         middleView.translatesAutoresizingMaskIntoConstraints = false
         
         return middleView
@@ -79,7 +94,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var horizontalCrossHair: UIView = {
         let horizontalCrossHair = UIView(frame: .zero)
-        horizontalCrossHair.backgroundColor = UIColor.darkGray
+        horizontalCrossHair.backgroundColor = .white
         horizontalCrossHair.translatesAutoresizingMaskIntoConstraints = false
         horizontalCrossHair.isHidden = true
         
@@ -88,7 +103,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var verticalCrossHair: UIView = {
         let verticalCrossHair = UIView(frame: .zero)
-        verticalCrossHair.backgroundColor = UIColor.darkGray
+        verticalCrossHair.backgroundColor = .white
         verticalCrossHair.translatesAutoresizingMaskIntoConstraints = false
         
         return verticalCrossHair
@@ -96,7 +111,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var leftBall: UIView = {
         let leftBall = UIView(frame: .zero)
-        leftBall.backgroundColor = UIColor.blue
+        leftBall.backgroundColor = UIColor(red:0.32, green:0.44, blue:1.00, alpha:1.0)
         leftBall.translatesAutoresizingMaskIntoConstraints = false
         leftBall.clipsToBounds = true
         
@@ -105,7 +120,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var rightBall: UIView = {
         let rightBall = UIView(frame: .zero)
-        rightBall.backgroundColor = UIColor.red
+        rightBall.backgroundColor = UIColor(red:1.00, green:0.34, blue:0.34, alpha:1.0)
         rightBall.translatesAutoresizingMaskIntoConstraints = false
         rightBall.clipsToBounds = true
         
@@ -114,7 +129,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var singleBall: UIView = {
         let singleBall = UIView(frame: .zero)
-        singleBall.backgroundColor = UIColor.green
+        singleBall.backgroundColor = UIColor(red:0.80, green:0.42, blue:0.90, alpha:1.0)
         singleBall.translatesAutoresizingMaskIntoConstraints = false
         singleBall.clipsToBounds = true
         singleBall.isHidden = true
@@ -192,71 +207,86 @@ class BalanceGameViewController: UIViewController {
         self.playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         self.backwardButton.addTarget(self, action: #selector(backwardTap), for: .touchUpInside)
         self.forwardButton.addTarget(self, action: #selector(forwardTap), for: .touchUpInside)
-        
-        self.segmentedControl.addTarget(self, action: #selector(didUpdateSegmentedControl(_:)), for: .valueChanged)
     }
     
     private func setupViews() {
         self.view.backgroundColor = .white
         self.navigationItem.title = self.gameType.title
+                
+        // view
+        self.view.addSubview(self.scoreView)
+        self.view.addSubview(self.insolesView)
+        self.view.addSubview(self.gameView)
+        self.view.addSubview(self.audioPlayerView)
         
-        self.topView.addSubview(missionsView)
-        self.topView.addSubview(self.segmentedControl)
+        // score view
+        self.scoreView.addSubview(scoreViewLabel)
+        self.scoreView.addSubview(scoreLabel)
+        
+        // game view
+        self.gameView.addSubview(self.horizontalCrossHair)
+        self.gameView.addSubview(self.verticalCrossHair)
+        
+        self.gameView.addSubview(self.leftBall)
+        self.gameView.addSubview(self.rightBall)
+        self.gameView.addSubview(self.singleBall)
+        
+        // insoles view
+        self.insolesView.addSubview(missionsView)
 
+        // audio controller view
         self.audioPlayerView.addSubview(soundSlider)
         self.audioPlayerView.addSubview(controllerView)
         
         self.controllerView.addSubview(playButton)
         self.controllerView.addSubview(backwardButton)
         self.controllerView.addSubview(forwardButton)
-        
-        self.view.addSubview(self.topView)
-        self.view.addSubview(self.middleView)
-        self.view.addSubview(self.audioPlayerView)
-        
-        self.middleView.addSubview(self.leftBall)
-        self.middleView.addSubview(self.rightBall)
-        self.middleView.addSubview(self.singleBall)
-        self.middleView.addSubview(self.horizontalCrossHair)
-        self.middleView.addSubview(self.verticalCrossHair)
     }
     
     private func applyConstraints() {
         let layoutMarginGuide = view.layoutMarginsGuide
 
-        self.leftBallTopAnchorConstraint = self.leftBall.topAnchor.constraint(equalTo: self.middleView.topAnchor)
-        self.leftBallLeadingAnchorConstraint = self.leftBall.leadingAnchor.constraint(equalTo: self.middleView.leadingAnchor)
+        self.leftBallTopAnchorConstraint = self.leftBall.topAnchor.constraint(equalTo: self.gameView.topAnchor)
+        self.leftBallLeadingAnchorConstraint = self.leftBall.leadingAnchor.constraint(equalTo: self.gameView.leadingAnchor)
         
-        self.rightBallTopAnchorConstraint = self.rightBall.topAnchor.constraint(equalTo: self.middleView.topAnchor)
-        self.rightBallTrailingAnchorConstraint = self.rightBall.trailingAnchor.constraint(equalTo: self.middleView.trailingAnchor)
+        self.rightBallTopAnchorConstraint = self.rightBall.topAnchor.constraint(equalTo: self.gameView.topAnchor)
+        self.rightBallTrailingAnchorConstraint = self.rightBall.trailingAnchor.constraint(equalTo: self.gameView.trailingAnchor)
         
-        self.singleBallTopAnchorConstraint = self.singleBall.topAnchor.constraint(equalTo: self.middleView.topAnchor)
-        self.singleBallLeadingAnchorConstraint = self.singleBall.leadingAnchor.constraint(equalTo: self.middleView.leadingAnchor)
+        self.singleBallTopAnchorConstraint = self.singleBall.topAnchor.constraint(equalTo: self.gameView.topAnchor)
+        self.singleBallLeadingAnchorConstraint = self.singleBall.leadingAnchor.constraint(equalTo: self.gameView.leadingAnchor)
         
         NSLayoutConstraint.activate([
-            // top view
-            self.topView.topAnchor.constraint(equalTo: layoutMarginGuide.topAnchor, constant: 20),
-            self.topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.topView.heightAnchor.constraint(equalTo: self.view.widthAnchor),
+            // score view
+            self.scoreView.topAnchor.constraint(equalTo: layoutMarginGuide.topAnchor),
+            self.scoreView.leadingAnchor.constraint(equalTo: layoutMarginGuide.leadingAnchor),
+            self.scoreView.trailingAnchor.constraint(equalTo: layoutMarginGuide.trailingAnchor),
+            self.scoreView.heightAnchor.constraint(equalTo: self.scoreView.widthAnchor, multiplier: 1 / 8),
+            
+            self.scoreViewLabel.centerYAnchor.constraint(equalTo: self.scoreView.centerYAnchor),
+            self.scoreViewLabel.leadingAnchor.constraint(equalTo: self.scoreView.leadingAnchor),
+            
+            self.scoreLabel.centerYAnchor.constraint(equalTo: self.scoreView.centerYAnchor),
+            self.scoreLabel.trailingAnchor.constraint(equalTo: self.scoreView.trailingAnchor),
+
+            // game view
+            self.gameView.topAnchor.constraint(equalTo: self.scoreView.bottomAnchor, constant: 10),
+            self.gameView.trailingAnchor.constraint(equalTo: layoutMarginGuide.trailingAnchor),
+            self.gameView.leadingAnchor.constraint(equalTo: layoutMarginGuide.leadingAnchor),
+            self.gameView.heightAnchor.constraint(equalTo: gameView.widthAnchor, multiplier: 3 / 4),
+            
+            // insoles view
+            self.insolesView.topAnchor.constraint(equalTo: self.gameView.bottomAnchor, constant: 20),
+            self.insolesView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.insolesView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.insolesView.heightAnchor.constraint(equalTo: self.insolesView.widthAnchor, multiplier: 3 / 4),
                     
-            // segmented control
-            self.segmentedControl.bottomAnchor.constraint(equalTo: self.topView.bottomAnchor),
-            self.segmentedControl.centerXAnchor.constraint(equalTo: self.topView.centerXAnchor),
-            
-            // middle view
-            self.middleView.topAnchor.constraint(equalTo: self.topView.bottomAnchor, constant: 10),
-            self.middleView.trailingAnchor.constraint(equalTo: layoutMarginGuide.trailingAnchor),
-            self.middleView.leadingAnchor.constraint(equalTo: layoutMarginGuide.leadingAnchor),
-            self.middleView.heightAnchor.constraint(equalTo: layoutMarginGuide.heightAnchor, multiplier: 1/4),
-            
             // cross hairs
-            self.horizontalCrossHair.widthAnchor.constraint(equalTo: self.middleView.widthAnchor),
-            self.horizontalCrossHair.heightAnchor.constraint(equalToConstant: 1),
-            self.verticalCrossHair.widthAnchor.constraint(equalToConstant: 1),
-            self.verticalCrossHair.heightAnchor.constraint(equalTo: self.middleView.heightAnchor),
-            self.horizontalCrossHair.centerYAnchor.constraint(equalTo: self.middleView.centerYAnchor),
-            self.verticalCrossHair.centerXAnchor.constraint(equalTo: self.middleView.centerXAnchor),
+            self.horizontalCrossHair.widthAnchor.constraint(equalTo: self.gameView.widthAnchor),
+            self.horizontalCrossHair.heightAnchor.constraint(equalToConstant: 5),
+            self.verticalCrossHair.widthAnchor.constraint(equalToConstant: 5),
+            self.verticalCrossHair.heightAnchor.constraint(equalTo: self.gameView.heightAnchor),
+            self.horizontalCrossHair.centerYAnchor.constraint(equalTo: self.gameView.centerYAnchor),
+            self.verticalCrossHair.centerXAnchor.constraint(equalTo: self.gameView.centerXAnchor),
             
             // left ball
             self.leftBall.heightAnchor.constraint(equalToConstant: 50),
@@ -277,7 +307,7 @@ class BalanceGameViewController: UIViewController {
            self.singleBallLeadingAnchorConstraint,
             
             // audio player view
-            self.audioPlayerView.topAnchor.constraint(equalTo: self.middleView.bottomAnchor),
+            self.audioPlayerView.topAnchor.constraint(equalTo: self.insolesView.bottomAnchor),
             self.audioPlayerView.leadingAnchor.constraint(equalTo: layoutMarginGuide.leadingAnchor),
             self.audioPlayerView.trailingAnchor.constraint(equalTo: layoutMarginGuide.trailingAnchor),
             self.audioPlayerView.bottomAnchor.constraint(equalTo: layoutMarginGuide.bottomAnchor),
@@ -313,7 +343,7 @@ class BalanceGameViewController: UIViewController {
             self.forwardButton.widthAnchor.constraint(equalTo: self.controllerView.heightAnchor)
         ])
         
-        missionsView.pin(to: topView)
+        missionsView.pin(to: insolesView)
         
     }
     
@@ -326,19 +356,17 @@ class BalanceGameViewController: UIViewController {
         self.singleBall.layer.cornerRadius = self.singleBall.frame.width / 2
 
         // set constraint constants of each ball after `viewDidLayoutSubviews()`
-        self.leftBallLeadingAnchorConstraint.constant = self.middleView.frame.width / 4 - self.leftBall.frame.width / 2
-        self.leftBallTopAnchorConstraint.constant = self.middleView.frame.height - self.leftBall.frame.height
+        self.leftBallLeadingAnchorConstraint.constant = self.gameView.frame.width / 4 - self.leftBall.frame.width / 2
+        self.leftBallTopAnchorConstraint.constant = self.gameView.frame.height - self.leftBall.frame.height
         
-        self.rightBallTrailingAnchorConstraint.constant = -(self.middleView.frame.width / 4 - self.rightBall.frame.width / 2)
-        self.rightBallTopAnchorConstraint.constant = self.middleView.frame.height - self.rightBall.frame.height
+        self.rightBallTrailingAnchorConstraint.constant = -(self.gameView.frame.width / 4 - self.rightBall.frame.width / 2)
+        self.rightBallTopAnchorConstraint.constant = self.gameView.frame.height - self.rightBall.frame.height
         
-        self.singleBallLeadingAnchorConstraint.constant = self.middleView.frame.width / 2 - self.singleBall.frame.width / 2
-        self.singleBallTopAnchorConstraint.constant = self.middleView.frame.height / 2 - self.singleBall.frame.height / 2
+        self.singleBallLeadingAnchorConstraint.constant = self.gameView.frame.width / 2 - self.singleBall.frame.width / 2
+        self.singleBallTopAnchorConstraint.constant = self.gameView.frame.height / 2 - self.singleBall.frame.height / 2
         
-        self.middleView.clipsToBounds = true
-        self.middleView.layer.cornerRadius = 10
-        self.middleView.layer.borderColor = UIColor.darkGray.cgColor
-        self.middleView.layer.borderWidth = 0.5
+        self.gameView.clipsToBounds = true
+        self.gameView.layer.cornerRadius = 10
     }
 }
 
@@ -471,14 +499,14 @@ extension BalanceGameViewController {
                 minRange: -7000,
                 maxRange: 7000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.width / 2 - self.leftBall.frame.width,
+                maxDomain: self.gameView.frame.width / 2 - self.leftBall.frame.width,
                 value: CGFloat(leftRightSum - leftLeftSum)
             )
             verticalConstant = map(
                 minRange: -7000,
                 maxRange: 7000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.height - self.leftBall.frame.height,
+                maxDomain: self.gameView.frame.height - self.leftBall.frame.height,
                 value: CGFloat(leftBottomSum - leftTopSum)
             )
         case .right:
@@ -486,14 +514,14 @@ extension BalanceGameViewController {
                 minRange: -7000,
                 maxRange: 7000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.width / 2 - self.rightBall.frame.width,
+                maxDomain: self.gameView.frame.width / 2 - self.rightBall.frame.width,
                 value: CGFloat(rightRightSum - rightLeftSum)
             )
             verticalConstant = map(
                 minRange: -7000,
                 maxRange: 7000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.height - self.rightBall.frame.height,
+                maxDomain: self.gameView.frame.height - self.rightBall.frame.height,
                 value: CGFloat(rightBottomSum - rightTopSum)
             )
         case .single:
@@ -501,14 +529,14 @@ extension BalanceGameViewController {
                 minRange: -14000,
                 maxRange: 14000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.width - self.singleBall.frame.width,
+                maxDomain: self.gameView.frame.width - self.singleBall.frame.width,
                 value: CGFloat(rightSum - leftSum + 3500)
             )
             verticalConstant = map(
                 minRange: -14000,
                 maxRange: 14000,
                 minDomain: 0,
-                maxDomain: self.middleView.frame.height - self.singleBall.frame.height,
+                maxDomain: self.gameView.frame.height - self.singleBall.frame.height,
                 value: CGFloat((rightBottomSum + leftBottomSum) - (rightTopSum + leftTopSum))
             )
         case .none:
@@ -531,23 +559,6 @@ extension BalanceGameViewController {
         return (horizontalConstant, verticalConstant)
     }
     
-    @objc func didUpdateSegmentedControl(_ segmentedControl: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            self.singleBall.isHidden = false
-            self.leftBall.isHidden = true
-            self.rightBall.isHidden = true
-            
-            self.horizontalCrossHair.isHidden = false
-        case 1:
-            self.singleBall.isHidden = true
-            self.leftBall.isHidden = false
-            self.rightBall.isHidden = false
-            self.horizontalCrossHair.isHidden = true
-        default: break
-        }
-        
-    }
     
     func setupGame() {
         switch self.gameType {
