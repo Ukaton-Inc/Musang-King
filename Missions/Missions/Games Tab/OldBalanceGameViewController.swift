@@ -3,15 +3,13 @@
 //  Missions
 //
 //  Created by Umar Qattan on 12/23/19.
-//  Modified by Elina Lua Ming on 1/15/20
 //  Copyright © 2019 Umar Qattan. All rights reserved.
 //
 
 import UIKit
 import SceneKit
-import SpriteKit
 
-enum GameType: Int {
+enum OldGameType: Int {
     case single
     case double
     case none
@@ -28,15 +26,7 @@ enum GameType: Int {
     }
 }
 
-enum BallPosition: String {
-    case single = "single"
-    
-    var notification: Notification.Name {
-        return Notification.Name(self.rawValue)
-    }
-}
-
-class BalanceGameViewController: UIViewController {
+class OldBalanceGameViewController: UIViewController {
 
     private var gameType: GameType = .none
     private var missionsView = MissionsView()
@@ -50,7 +40,6 @@ class BalanceGameViewController: UIViewController {
     private var rightBallTrailingAnchorConstraint = NSLayoutConstraint()
     private var singleBallTopAnchorConstraint = NSLayoutConstraint()
     private var singleBallLeadingAnchorConstraint = NSLayoutConstraint()
-    private var currentScore: Int = 0
     
     private lazy var soundSlider: UISlider = {
         let slider = UISlider()
@@ -81,7 +70,7 @@ class BalanceGameViewController: UIViewController {
     private lazy var scoreLabel: UILabel = {
         let scoreLabel = UILabel()
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        scoreLabel.text = "\(currentScore)"
+        scoreLabel.text = "0"
         scoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         
         return scoreLabel
@@ -95,22 +84,12 @@ class BalanceGameViewController: UIViewController {
         return topView
     }()
     
-    private lazy var gameView: SKView = {
-        let gameView = SKView(frame: .zero)
-        gameView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        gameView.translatesAutoresizingMaskIntoConstraints = false
-        gameView.showsPhysics = true
-        gameView.showsFPS = true
-        gameView.showsNodeCount = true
-//        gameView.ignoresSiblingOrder = true
+    private lazy var gameView: UIView = {
+        let middleView = UIView(frame: .zero)
+        middleView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        middleView.translatesAutoresizingMaskIntoConstraints = false
         
-        return gameView
-    }()
-    
-    private lazy var gameScene: GameScene = {
-        let scene = GameScene(size: self.gameView.bounds.size)
-        
-        return scene
+        return middleView
     }()
     
     private lazy var horizontalCrossHair: UIView = {
@@ -118,7 +97,6 @@ class BalanceGameViewController: UIViewController {
         horizontalCrossHair.backgroundColor = .white
         horizontalCrossHair.translatesAutoresizingMaskIntoConstraints = false
         horizontalCrossHair.isHidden = true
-        horizontalCrossHair.alpha = 0.0
         
         return horizontalCrossHair
     }()
@@ -127,14 +105,13 @@ class BalanceGameViewController: UIViewController {
         let verticalCrossHair = UIView(frame: .zero)
         verticalCrossHair.backgroundColor = .white
         verticalCrossHair.translatesAutoresizingMaskIntoConstraints = false
-        verticalCrossHair.alpha = 0.0
         
         return verticalCrossHair
     }()
     
     private lazy var leftBall: UIView = {
         let leftBall = UIView(frame: .zero)
-        leftBall.backgroundColor = UIColor(red:0.32, green:0.44, blue:1.00, alpha:0.0)
+        leftBall.backgroundColor = UIColor(red:0.32, green:0.44, blue:1.00, alpha:1.0)
         leftBall.translatesAutoresizingMaskIntoConstraints = false
         leftBall.clipsToBounds = true
         
@@ -143,7 +120,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var rightBall: UIView = {
         let rightBall = UIView(frame: .zero)
-        rightBall.backgroundColor = UIColor(red:1.00, green:0.34, blue:0.34, alpha:0.0)
+        rightBall.backgroundColor = UIColor(red:1.00, green:0.34, blue:0.34, alpha:1.0)
         rightBall.translatesAutoresizingMaskIntoConstraints = false
         rightBall.clipsToBounds = true
         
@@ -152,7 +129,7 @@ class BalanceGameViewController: UIViewController {
     
     private lazy var singleBall: UIView = {
         let singleBall = UIView(frame: .zero)
-        singleBall.backgroundColor = UIColor(red:0.80, green:0.42, blue:0.90, alpha:0.0)
+        singleBall.backgroundColor = UIColor(red:0.80, green:0.42, blue:0.90, alpha:1.0)
         singleBall.translatesAutoresizingMaskIntoConstraints = false
         singleBall.clipsToBounds = true
         singleBall.isHidden = true
@@ -247,21 +224,12 @@ class BalanceGameViewController: UIViewController {
         self.scoreView.addSubview(scoreLabel)
         
         // game view
-        self.gameView.presentScene(gameScene)
         self.gameView.addSubview(self.horizontalCrossHair)
         self.gameView.addSubview(self.verticalCrossHair)
         
         self.gameView.addSubview(self.leftBall)
         self.gameView.addSubview(self.rightBall)
         self.gameView.addSubview(self.singleBall)
-        
-//        if let view = self.gameView as SKView? {
-//            if let scene = gameScene as GameScene? {
-//                scene.scaleMode = .aspectFill
-//                view.presentScene(scene)
-//            }
-//            view.ignoresSiblingOrder = true
-//        }
         
         // insoles view
         self.insolesView.addSubview(missionsView)
@@ -305,7 +273,7 @@ class BalanceGameViewController: UIViewController {
             self.gameView.trailingAnchor.constraint(equalTo: layoutMarginGuide.trailingAnchor),
             self.gameView.leadingAnchor.constraint(equalTo: layoutMarginGuide.leadingAnchor),
             self.gameView.heightAnchor.constraint(equalTo: gameView.widthAnchor, multiplier: 3 / 4),
-
+            
             // insoles view
             self.insolesView.topAnchor.constraint(equalTo: self.gameView.bottomAnchor, constant: 20),
             self.insolesView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -402,18 +370,11 @@ class BalanceGameViewController: UIViewController {
     }
 }
 
-extension BalanceGameViewController {
+extension OldBalanceGameViewController {
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLeft(_:)), name: NSNotification.Name(rawValue: BLEDeviceSide.left.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateRight(_:)), name: NSNotification.Name(rawValue: BLEDeviceSide.right.rawValue), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateScore(_:)), name: ScoreNotification.single.notification, object: nil)
-    }
-    
-    @objc func updateScore(_ notification: Notification) {
-        print("updating score!")
-        currentScore += 1
-        scoreLabel.text = "\(currentScore)"
     }
     
     @objc func updateLeft(_ notification: Notification) {
@@ -454,9 +415,8 @@ extension BalanceGameViewController {
             print("Pan: \(Float(panHorizontalConstant))")
             switch self.gameType {
             case .single:
-//                self.singleBallTopAnchorConstraint.constant = verticalConstant
-//                self.singleBallLeadingAnchorConstraint.constant = horizontalConstant
-                NotificationCenter.default.post(name: BallPosition.single.notification, object: nil, userInfo: ["horizontalConstant": horizontalConstant, "verticalConstant": verticalConstant])
+                self.singleBallTopAnchorConstraint.constant = verticalConstant
+                self.singleBallLeadingAnchorConstraint.constant = horizontalConstant
             case .double:
                 // left ball constraint constant update
                 self.leftBallTopAnchorConstraint.constant = leftVerticalConstant

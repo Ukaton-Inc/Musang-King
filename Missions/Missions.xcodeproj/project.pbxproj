@@ -11,7 +11,7 @@
 		E11AEABF23B6E3F300979EBA /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AEABE23B6E3F300979EBA /* GamesViewController.swift */; };
 		E11AEAC223B6E40500979EBA /* GameOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AEAC023B6E40500979EBA /* GameOneViewController.swift */; };
 		E11AEAC323B6E40500979EBA /* GameCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AEAC123B6E40500979EBA /* GameCVCell.swift */; };
-		E1AC7E1C23BE390F00C382AA /* BalanceGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7E1B23BE390F00C382AA /* BalanceGameViewController.swift */; };
+		E1AC7E1C23BE390F00C382AA /* OldBalanceGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7E1B23BE390F00C382AA /* OldBalanceGameViewController.swift */; };
 		E1AC7E1E23BE395300C382AA /* SetupDeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7E1D23BE395300C382AA /* SetupDeviceTableViewController.swift */; };
 		EA1D215A23B0BE50009FCCC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D215923B0BE50009FCCC4 /* AppDelegate.swift */; };
 		EA1D215C23B0BE50009FCCC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D215B23B0BE50009FCCC4 /* SceneDelegate.swift */; };
@@ -36,6 +36,8 @@
 		EA1D219C23B1F615009FCCC4 /* CSwiftV.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D219B23B1F615009FCCC4 /* CSwiftV.swift */; };
 		EA1D21A823B1FB9B009FCCC4 /* AssetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D21A723B1FB9B009FCCC4 /* AssetConstants.swift */; };
 		EA1D21B423B2B9AE009FCCC4 /* RecordingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D21B323B2B9AE009FCCC4 /* RecordingTableViewCell.swift */; };
+		EABC322023D0066A00BB3555 /* BalanceGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC321F23D0066A00BB3555 /* BalanceGameViewController.swift */; };
+		EABC322423D0099200BB3555 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC322323D0099200BB3555 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +45,7 @@
 		E11AEABE23B6E3F300979EBA /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		E11AEAC023B6E40500979EBA /* GameOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOneViewController.swift; sourceTree = "<group>"; };
 		E11AEAC123B6E40500979EBA /* GameCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCVCell.swift; sourceTree = "<group>"; };
-		E1AC7E1B23BE390F00C382AA /* BalanceGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameViewController.swift; sourceTree = "<group>"; };
+		E1AC7E1B23BE390F00C382AA /* OldBalanceGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldBalanceGameViewController.swift; sourceTree = "<group>"; };
 		E1AC7E1D23BE395300C382AA /* SetupDeviceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupDeviceTableViewController.swift; path = "Missions/Settings Tab/SetupDeviceTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		EA1D215623B0BE50009FCCC4 /* Missions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Missions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1D215923B0BE50009FCCC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 		EA1D219B23B1F615009FCCC4 /* CSwiftV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSwiftV.swift; sourceTree = "<group>"; };
 		EA1D21A723B1FB9B009FCCC4 /* AssetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetConstants.swift; sourceTree = "<group>"; };
 		EA1D21B323B2B9AE009FCCC4 /* RecordingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingTableViewCell.swift; sourceTree = "<group>"; };
+		EABC321F23D0066A00BB3555 /* BalanceGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceGameViewController.swift; sourceTree = "<group>"; };
+		EABC322323D0099200BB3555 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +90,9 @@
 		E11AEABC23B6E3C000979EBA /* Games Tab */ = {
 			isa = PBXGroup;
 			children = (
-				E1AC7E1B23BE390F00C382AA /* BalanceGameViewController.swift */,
+				E1AC7E1B23BE390F00C382AA /* OldBalanceGameViewController.swift */,
+				EABC321F23D0066A00BB3555 /* BalanceGameViewController.swift */,
+				EABC322323D0099200BB3555 /* GameScene.swift */,
 				E11AEABE23B6E3F300979EBA /* GamesViewController.swift */,
 				E11AEABD23B6E3D900979EBA /* Games */,
 			);
@@ -281,6 +287,7 @@
 				EA1D219823B1F447009FCCC4 /* TimeInterval+Missions.swift in Sources */,
 				EA1D218F23B1F398009FCCC4 /* SmartShoeInsoleStanceClassifier.mlmodel in Sources */,
 				EA1D218D23B1F34F009FCCC4 /* Missions.swift in Sources */,
+				EABC322423D0099200BB3555 /* GameScene.swift in Sources */,
 				EA1D215A23B0BE50009FCCC4 /* AppDelegate.swift in Sources */,
 				E11AEABF23B6E3F300979EBA /* GamesViewController.swift in Sources */,
 				EA1D219A23B1F46B009FCCC4 /* Array+Missions.swift in Sources */,
@@ -294,7 +301,8 @@
 				EA1D219C23B1F615009FCCC4 /* CSwiftV.swift in Sources */,
 				EA1D218623B1F2E5009FCCC4 /* BLE.swift in Sources */,
 				EA1D218B23B1F324009FCCC4 /* AudioPlayback.swift in Sources */,
-				E1AC7E1C23BE390F00C382AA /* BalanceGameViewController.swift in Sources */,
+				E1AC7E1C23BE390F00C382AA /* OldBalanceGameViewController.swift in Sources */,
+				EABC322023D0066A00BB3555 /* BalanceGameViewController.swift in Sources */,
 				E11AEAC223B6E40500979EBA /* GameOneViewController.swift in Sources */,
 				EA1D21A823B1FB9B009FCCC4 /* AssetConstants.swift in Sources */,
 				EA1D218123B1F22E009FCCC4 /* Enums.swift in Sources */,
