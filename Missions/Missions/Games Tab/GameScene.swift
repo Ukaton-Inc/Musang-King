@@ -90,7 +90,6 @@ class GameScene: SKScene {
         
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
-//        getSceneRangeValues()
         addObservers()
         setupScene()
         addChildren()
@@ -171,7 +170,7 @@ extension GameScene {
         let maxX = (self.frame.width / 2) - Radius.single.rawValue
         let minY = -self.frame.height / 2 + Radius.single.rawValue
         let maxY = self.frame.height / 2 - Radius.single.rawValue
-//
+        
         destX = clamp(destX, min: minX, max: maxX)
         destY = clamp(destY, min: minY, max: maxY)
         

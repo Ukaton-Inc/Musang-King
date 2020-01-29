@@ -255,14 +255,6 @@ class BalanceGameViewController: UIViewController {
         self.gameView.addSubview(self.rightBall)
         self.gameView.addSubview(self.singleBall)
         
-//        if let view = self.gameView as SKView? {
-//            if let scene = gameScene as GameScene? {
-//                scene.scaleMode = .aspectFill
-//                view.presentScene(scene)
-//            }
-//            view.ignoresSiblingOrder = true
-//        }
-        
         // insoles view
         self.insolesView.addSubview(missionsView)
 
@@ -411,7 +403,6 @@ extension BalanceGameViewController {
     }
     
     @objc func updateScore(_ notification: Notification) {
-        print("updating score!")
         currentScore += 1
         scoreLabel.text = "\(currentScore)"
     }
@@ -454,8 +445,6 @@ extension BalanceGameViewController {
             print("Pan: \(Float(panHorizontalConstant))")
             switch self.gameType {
             case .single:
-//                self.singleBallTopAnchorConstraint.constant = verticalConstant
-//                self.singleBallLeadingAnchorConstraint.constant = horizontalConstant
                 NotificationCenter.default.post(name: BallPosition.single.notification, object: nil, userInfo: ["horizontalConstant": horizontalConstant, "verticalConstant": verticalConstant])
             case .double:
                 // left ball constraint constant update
